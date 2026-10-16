@@ -1,0 +1,44 @@
+{
+  "baseline_20": {
+    "input_images": 20,
+    "exit_code": 0,
+    "status": "model_produced_requires_visual_check",
+    "components": [
+      {
+        "model": "experiments\\baseline_20\\workspace\\sparse\\0",
+        "registered_images": 20,
+        "points3D": 11560
+      }
+    ]
+  },
+  "baseline_10": {
+    "input_images": 10,
+    "exit_code": 0,
+    "status": "model_produced_requires_visual_check",
+    "components": [
+      {
+        "model": "experiments\\baseline_10\\workspace\\sparse\\0",
+        "registered_images": 10,
+        "points3D": 2018
+      }
+    ]
+  },
+  "baseline_05": {
+    "input_images": 5,
+    "exit_code": 0,
+    "status": "model_produced_requires_visual_check",
+    "components": [
+      {
+        "model": "experiments\\baseline_05\\workspace\\sparse\\0",
+        "registered_images": 3,
+        "points3D": 51
+      }
+    ]
+  },
+  "baseline_03": {
+    "input_images": 3,
+    "exit_code": 0,
+    "status": "no_model",
+    "components": []
+  }
+}

@@ -1,0 +1,2 @@
+Previsione salvata prima del run: 2026-10-16T22:35:56.769581+02:00
+Sei viste della pila di libri e del mobile, acquisite secondo il protocollo di rotazione quasi sul posto. Ipotesi: feature e match presenti, ma scarsa parallasse con inizializzazione o triangolazione instabile. Rotazione pura non verificata: eventuale traslazione involontaria puo consentire un modello. Nessun esito assunto in anticipo.

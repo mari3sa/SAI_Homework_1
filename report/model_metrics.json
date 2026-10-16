@@ -1,0 +1,78 @@
+{
+  "baseline_20": [
+    {
+      "Rigs": 20.0,
+      "Cameras": 20.0,
+      "Frames": 20.0,
+      "Registered frames": 20.0,
+      "Images": 20.0,
+      "Registered images": 20.0,
+      "Points": 11560.0,
+      "Observations": 41090.0,
+      "Mean track length": 3.554498,
+      "Mean observations per image": 2054.5,
+      "Mean reprojection error": 0.949945
+    }
+  ],
+  "baseline_10": [
+    {
+      "Rigs": 10.0,
+      "Cameras": 10.0,
+      "Frames": 10.0,
+      "Registered frames": 10.0,
+      "Images": 10.0,
+      "Registered images": 10.0,
+      "Points": 2018.0,
+      "Observations": 6092.0,
+      "Mean track length": 3.018831,
+      "Mean observations per image": 609.2,
+      "Mean reprojection error": 0.899631
+    }
+  ],
+  "baseline_05": [
+    {
+      "Rigs": 3.0,
+      "Cameras": 3.0,
+      "Frames": 3.0,
+      "Registered frames": 3.0,
+      "Images": 3.0,
+      "Registered images": 3.0,
+      "Points": 51.0,
+      "Observations": 127.0,
+      "Mean track length": 2.490196,
+      "Mean observations per image": 42.333333,
+      "Mean reprojection error": 0.678956
+    }
+  ],
+  "baseline_03": [],
+  "broken": [
+    {
+      "Rigs": 4.0,
+      "Cameras": 4.0,
+      "Frames": 4.0,
+      "Registered frames": 4.0,
+      "Images": 4.0,
+      "Registered images": 4.0,
+      "Points": 13.0,
+      "Observations": 27.0,
+      "Mean track length": 2.076923,
+      "Mean observations per image": 6.75,
+      "Mean reprojection error": 1.6e-05
+    }
+  ],
+  "repaired": [
+    {
+      "Rigs": 9.0,
+      "Cameras": 9.0,
+      "Frames": 9.0,
+      "Registered frames": 9.0,
+      "Images": 9.0,
+      "Registered images": 9.0,
+      "Points": 6795.0,
+      "Observations": 31371.0,
+      "Mean track length": 4.616777,
+      "Mean observations per image": 3485.666667,
+      "Mean reprojection error": 1.065179
+    }
+  ]
+}

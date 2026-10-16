@@ -1,0 +1,14 @@
+{
+  "broken": {
+    "input_images": 6,
+    "exit_code": 0,
+    "status": "model_produced_requires_visual_check",
+    "components": [
+      {
+        "model": "experiments\\broken\\workspace\\sparse\\0",
+        "registered_images": 4,
+        "points3D": 13
+      }
+    ]
+  }
+}

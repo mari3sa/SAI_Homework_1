@@ -24,7 +24,7 @@ def prepare():
     baseline = images(ROOT / 'originals/baseline')
     broken = images(ROOT / 'originals/broken')
     extra = images(ROOT / 'originals/repair_extra')
-    if len(baseline) != 20 or not 2 <= len(broken) <= 10 or not 1 <= len(extra) <= 3:
+    if len(baseline) != 20 or (broken and not 2 <= len(broken) <= 10) or len(extra) > 3 or (extra and not broken):
         raise ValueError(f'Servono 20 baseline, 2-10 broken, 1-3 repair_extra; trovati {len(baseline)}, {len(broken)}, {len(extra)}.')
     order = ROOT / 'baseline_order.txt'
     if order.exists():
@@ -33,7 +33,10 @@ def prepare():
             raise ValueError('baseline_order.txt deve elencare ciascuna delle 20 foto esattamente una volta.')
         baseline = [ROOT / 'originals/baseline' / n for n in names]
     sets = {f'baseline_{n:02}': [baseline[i * 20 // n] for i in range(n)] for n in (20, 10, 5, 3)}
-    sets.update(broken=broken, repaired=broken + extra)
+    if broken:
+        sets['broken'] = broken
+    if broken and extra:
+        sets['repaired'] = broken + extra
     target = ROOT / 'experiments'
     if target.exists():
         raise ValueError('experiments esiste gia: preservato. Usa una nuova copia del progetto per nuovi dati.')
@@ -51,7 +54,7 @@ def prepare():
                 raise ValueError('Copia non integra: ' + str(dest))
             manifest[name].append({'source': str(source.relative_to(ROOT)), 'file': dest.name, 'sha256': digest})
     (target / 'manifest.json').write_text(json.dumps(manifest, indent=2), encoding='utf-8')
-    print('Preparati sei esperimenti, originali preservati.')
+    print(f'Preparati {len(sets)} esperimenti, file sorgente preservati.')
 
 
 def execute(command, log):
@@ -70,6 +73,7 @@ def run(colmap):
     executable = shutil.which(colmap) or (str(Path(colmap).resolve()) if Path(colmap).is_file() else None)
     if not executable:
         raise ValueError('COLMAP non trovato: specifica --colmap con il percorso di COLMAP.bat o colmap.exe.')
+    executable = str(Path(executable).resolve())
     target = ROOT / 'experiments'
     manifest = json.loads((target / 'manifest.json').read_text(encoding='utf-8'))
     execute([executable, '-h'], target / 'colmap_version_help.txt')
@@ -82,7 +86,7 @@ def run(colmap):
             print(name + ': gia avviato, preservato.')
             continue
         workspace.mkdir()
-        command = [executable, 'automatic_reconstructor', '--workspace_path', str(workspace), '--image_path', str(folder / 'images'), '--dense', '0']
+        command = [executable, 'automatic_reconstructor', '--workspace_path', str(workspace), '--image_path', str(folder / 'images'), '--dense', '0', '--use_gpu', '0', '--num_threads', '2']
         (folder / 'command.json').write_text(json.dumps(command, indent=2), encoding='utf-8')
         print('Esecuzione ' + name, flush=True)
         code = execute(command, folder / 'run.log')

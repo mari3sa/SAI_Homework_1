@@ -1,6 +1,13 @@
 __pycache__/
 *.pyc
 experiments/
-submission/
+submission/*
+!submission/*.pdf
 originals/**/*
 !originals/**/.gitkeep
+
+tools/
+
+experiments_gpu_startup_error/
+
+tmp/

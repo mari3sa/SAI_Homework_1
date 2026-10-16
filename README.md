@@ -1,6 +1,7 @@
 # Homework 1 - Break COLMAP
 
-Stato: struttura pronta; esperimenti non eseguiti, in attesa delle foto originali e di COLMAP.
+Stato: completati e verificati i sei esperimenti sugli originali confermati dalla studentessa. CPU, due thread, parametri geometrici predefiniti. Baseline: 20/20 viste e 11560 punti; 10/10 e 2018; 3/5 e 51; nessun modello con 3 foto. Fallimento: 4/6 viste e 13 punti. Riparazione: 9/9 viste e 6795 punti. PDF aggiornato in submission/Mazzara_2278680_Homework1.pdf e ZIP verificato con 29 immagini. Risultati precedenti conservati in tmp/before_originals_update.
+
 Scadenza della traccia: 17 ottobre 2026, 23:59 CEST.
 
 ## Materiale necessario
@@ -28,9 +29,9 @@ python workflow.py run --colmap "C:\percorso\COLMAP.bat"
 python workflow.py zip
 ```
 
-`prepare` crea sei cartelle indipendenti in `experiments`, piu un manifest con hash SHA-256. Rifiuta di sovrascrivere esperimenti esistenti. I sottocampioni sono distribuiti sul giro completo (indici floor(i*20/n)).
+`prepare` crea quattro cartelle baseline e aggiunge i casi broken/repaired quando sono disponibili in `experiments`, piu un manifest con hash SHA-256. Rifiuta di sovrascrivere esperimenti esistenti. I sottocampioni sono distribuiti sul giro completo (indici floor(i*20/n)).
 
-`run` usa `automatic_reconstructor` con i default e `--dense 0` per limitarsi alla ricostruzione sparsa ammessa dalla traccia. Registra comandi, help/versione e log. Non modifica soglie o algoritmi. I run gia avviati non vengono sovrascritti. `results.json` riporta conteggi per ogni componente: componenti separate non vanno sommate come se fossero un unico modello coerente. Un errore del programma e distinto dall'assenza di modello.
+`run` usa `automatic_reconstructor` con i default geometrici, `--dense 0` e `--use_gpu 0 --num_threads 2` (per evitare gli arresti software osservati) per limitarsi alla ricostruzione sparsa ammessa dalla traccia. Registra comandi, help/versione e log. Non modifica soglie o algoritmi. I run gia avviati non vengono sovrascritti. `results.json` riporta conteggi per ogni componente: componenti separate non vanno sommate come se fossero un unico modello coerente. Un errore del programma e distinto dall'assenza di modello.
 
 Apri ogni modello con COLMAP per controllare forma, camere, punti fuori posto e componenti separate; salva screenshot in `report`. Il numero di punti da solo non dimostra correttezza. Completa la relazione con osservazioni reali, seleziona foto e screenshot, quindi esporta in PDF: massimo due pagine di testo o circa 6000 caratteri, figure e tabelle escluse.
 
