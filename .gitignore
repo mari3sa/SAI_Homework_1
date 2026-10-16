@@ -1,0 +1,6 @@
+__pycache__/
+*.pyc
+experiments/
+submission/
+originals/**/*
+!originals/**/.gitkeep
